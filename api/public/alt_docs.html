@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Cornelia API Docs</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-left: 1%;
+            text-decoration: underline;
+        }
+
+        h3 {
+            margin-left: 1%;
+            text-decoration: underline;
+        }
+
+        h4 {
+            margin-left: 1%;
+        }
+
+        .table_of_contents {
+            font-size: smaller;
+            width: 100%;
+            float: left;
+        }
+
+        .column1 {
+            width: 33%;
+            float: left;
+        }
+
+        .column2 {
+            width: 33%;
+            float: left;
+        }
+
+        .column3 {
+            width: 32%;
+            float: left;
+        }
+
+        a:link, a:visited, a:hover, a:active {
+            color: black;
+        }
+
+        .text {
+            margin-left: 2%;
+        }
+
+        .code_div {
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-bottom: 2%;
+            margin-top: 2%;
+        }
+        .code_text {
+            font-style: italic;
+        }
+
+        .entry {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            margin: 1%;
+            border: 1px solid black;
+        }
+
+        .statement {
+            font-size: medium;
+            text-indent: 3%;
+            font-style: italic;
+        }
+
+        .section_statement {
+            font-weight: bold;
+            text-decoration: underline;
+            text-indent: 3%;
+        }
+
+        .keywords {
+            font-weight: bold;
+
+        }
+
+        .tab {
+            text-indent: 5%;
+        }
+
+        .extra_tab {
+            text-indent: 8%;
+        }
+
+        .explanation {
+            font-style: italic;
+        }
+
+        .return_home {
+            text-indent: 2%;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Project Cornelia API Docs</h1>
+<a name="table_of_contents"></a>
+<h2>Table of contents</h2>
+<section class="table_of_contents">
+    <ul style="list-style-type: none;">
+        <div class="column1">
+            <li><a href="#quick_start_guide">Quick Start Guide</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#archive">Archives</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#archive_year_limits">/archives/year_limits</a></li>
+                    <li><a href="#archive_count">/archives/count</a></li>
+                </ul>
+            </li>
+            <li><a href="#actor">Actor</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#actor_id">/actor/id</a></li>
+                    <li><a href="#actor_search">/actor/search</a></li>
+                    <li><a href="#actor_first_name">/actor/first_name</a></li>
+                    <li><a href="#actor_surname">/actor/surname</a></li>
+                    <li><a href="#actor_gender">/actor/gender</a></li>
+                    <li><a href="#actor_incomplete">/actor/incomplete</a></li>
+
+                    <li><a href="#actor_lifespan">/actor/lifespan</a></li>
+
+                    <li><a href="#actor_life_events_personal">/actor/life_events/personal</a></li>
+                    <li><a href="#actor_life_events_professional">/actor/life_events/professional</a></li>
+                </ul>
+            </li>
+            <li><a href="#organization">Organization</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#organization_id">/organization/id</a></li>
+                    <li><a href="#organization_search">/organization/search</a></li>
+                    <li><a href="#organization_name">/organization/name</a></li>
+                    <li><a href="#organization_organization_type_name">/organization/organization_type_name</a></li>
+                    <li><a href="#organization_place_id">/organization/place_id</a></li>
+                    <li><a href="#organization_place_name">/organization/place_name</a></li>
+                    <li><a href="#organization_actor_id">/organization/actor_id</a></li>
+                    <li><a href="#organization_first_name">/organization/first_name</a></li>
+                    <li><a href="#organization_surname">/organization/surname</a></li>
+                </ul>
+            </li>
+        </div>
+        <div class="column2">
+            <li><a href="#place">Place</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#place_id">/place/id</a></li>
+                    <li><a href="#place_search">/place/search</a></li>
+                    <li><a href="#place_name">/place/name</a></li>
+                    <li><a href="#place_country">Country</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#place_country_id">/place/country/id</a></li>
+                            <li><a href="#place_country_search">/place/country/search</a></li>
+                            <li><a href="#place_country_name">/place/country/name</a></li>
+                            <li><a href="#place_country_matching">/place/country/matching</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#place_city">City</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#place_city_id">/place/city/id</a></li>
+                            <li><a href="#place_city_search">/place/city/search</a></li>
+                            <li><a href="#place_city_name">/place/city/name</a></li>
+                            <li><a href="#place_city_matching">/place/city/matching</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#place_parish">Parish</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#place_parish_id">/place/parish/id</a></li>
+                            <li><a href="#place_parish_search">/place/parish/search</a></li>
+                            <li><a href="#place_parish_name">/place/parish/name</a></li>
+                            <li><a href="#place_parish_matching">/place/parish/matching</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#place_street">Street</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#place_street_id">/place/street/id</a></li>
+                            <li><a href="#place_street_search">/place/street/search</a></li>
+                            <li><a href="#place_street_name">/place/street/name</a></li>
+                            <li><a href="#place_street_matching">/place/street/matching</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#place_house">House</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#place_house_id">/place/house/id</a></li>
+                            <li><a href="#place_house_search">/place/house/search</a></li>
+                            <li><a href="#place_house_name">/place/house/name</a></li>
+                            <li><a href="#place_house_matching">/place/house/matching</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <br><br><br><br> <!--To separate first item from table of contents-->
+        </div>
+        <div class="column3">
+            <li><a href="#relationship">Relationship</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#relationship_personal">Personal</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#relationship_personal_spouse">/relationship/personal/spouse</a></li>
+                            <li><a href="#relationship_personal_parents">/relationship/personal/parents</a></li>
+                            <li><a href="#relationship_personal_offspring">/relationship/personal/offspring</a></li>
+                            <li><a href="#relationship_personal_godparents">/relationship/personal/godparents</a></li>
+                            <li><a href="#relationship_personal_godchildren">/relationship/personal/godchildren</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#relationship_professional">Professional</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#relationship_professional_teachers">/relationship/professional/teachers</a></li>
+                            <li><a href="#relationship_professional_students">/relationship/professional/students</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#relationship_location">Location</a>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#relationship_location_residents">/relationship/location/residents</a></li>
+                            <li><a href="#relationship_location_living_places">/relationship/location/living_places</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#source">Source</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#source_id">/source/id</a></li>
+                    <li><a href="#source_search">/source/search</a></li>
+                    <li><a href="#source_reference">/source/reference</a></li>
+                    <li><a href="#source_call_number">/source/call_number</a></li>
+                    <li><a href="#source_archive">/source/archive</a></li>
+                    <li><a href="#source_archival_set_abbreviation">/source/archival_set_abbreviation</a></li>
+                    <li><a href="#source_archival_set_name">/source/archival_set_name</a></li>
+                </ul>
+            </li>
+            <li><a href="#source_entry">Source entry</a>
+                <ul style="list-style-type: none;">
+                    <li><a href="#source_entry_id">/source_entry/id</a></li>
+                    <li><a href="#source_entry_search">/source_entry/search</a></li>
+                    <li><a href="#source_entry_source_id">/source_entry/source_id</a></li>
+                    <li><a href="#source_entry_source_reference">/source_entry/source_reference</a></li>
+                    <li><a href="#source_entry_source_entry_reference">/source_entry/source_entry_reference</a></li>
+                    <li><a href="#source_entry_source_entry_type_name">/source_entry/source_entry_type_name</a></li>
+                    <li><a href="#source_entry_source_entry_type_category">/source_entry/source_entry_type_category</a></li>
+                    <li><a href="#source_entry_date">/source_entry/date</a></li>
+                    <li><a href="#source_entry_remarks">/source_entry/remarks</a></li>
+                    <li><a href="#source_entry_picture_file">/source_entry/picture_file</a></li>
+                    <li><a href="#source_entry_publication">/source_entry/publication</a></li>
+                </ul>
+            </li>
+        </div>
+    </ul>
+</section>
+
+<br><br><br><br>
+
+<div class="structure_section">
+    <a name="quick_start_guide"></a>
+    <h2>Quick start guide</h2>
+    <p class="text">
+        To get information from the API, an HTTP GET request should be sent to <span class="url"></span>.
+        This section will explain how to form these requests based on the documentation on this page.
+        In the <a href="#examples">next section</a>, a few coding examples are given for some concrete scenarios.
+    </p>
+    <p class="text">
+        A request for a function is made by appending the function to <span class="url"></span>.
+        For example to use the /archives/count function, the request should read <span class="url"></span>/archives/count.
+        The parameters are separated by a question mark from the function name and a list of parameters has an ampersand between each parameter.
+        The name of the parameter must be typed and assigned with an equal sign.
+        For example, to get the id of the actor whose first and surname are given as Antoon Sallaert, the request would look as follows:
+        <span class="url"></span>/actor/id?first_name=Antoon&surname=Sallaert
+    </p>
+    <p class="text">
+        The requests return a json file. If the documentation specifies that a list will be returned, this will take the form of a list of object.
+        Otherwise the json file will be one object with the fields that are specified in the return statements of the documentation.
+    </p>
+    <p class="text">
+        An invalid request will result in an HTTP error.
+        If an unrecognised method is requested, a 404 error will be returned to indicate the page was not found and
+        if one of the parameters was not recognised, a 400 error will be returned to indicate a bad request.
+        Any other conditions that will result in errors are indicated in the methods documentation.
+    </p>
+    <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+</div>
+<div class="structure_section">
+    <a name="examples"></a>
+    <h2>Examples</h2>
+    <p class="text">
+        In this section a few examples will be given to clarify the use of the API.
+        These examples will be written in JavaScript, using the fetch function for submitting the HTTP request.
+        If the code is not run in a browser, but instead in a node environment, this fetch function can be provided as follows:
+    </p>
+    <div class="code_div">
+        <p class="code_text">
+            <b>const</b> fetch = require("node-fetch")
+        </p>
+    </div>
+    <p class="text">
+        This example shows how to access the surname and gender of an actor.
+    </p>
+    <div class="code_div">
+        <p class="code_text">
+            //Defining the http requests<br>
+            <b>const</b> domain = "<span class="url"></span>/";<br>
+            <b>const</b> actor_surname_url = "actor/surname?id="<br>
+            <b>const</b> actor_gender_url = "actor/gender?id="<br><br>
+
+            //Fetching the surname of the actor<br>
+            fetch(domain+actor_surname_url+490).<b>then</b>(data=>{<b>return</b> data.json()}).<b>then</b>(res => {<br><br>
+
+            //Logging the surname to the console<br>
+            console.log(res.surname);<br><br>
+
+            })<br><br>
+
+            //Fetching the gender of the actor<br>
+            fetch(domain+actor_gender_url+490).<b>then</b>(data=>{<b>return</b> data.json()}).<b>then</b>(res => {<br><br>
+
+            //Logging the gender to the console<br>
+            console.log(res.gender);<br><br>
+
+            })
+        </p>
+    </div>
+    <p class="text">
+        The code below will return a list of places where the parish contains the words "Onze-Lieve-Vrouw".
+    </p>
+    <div class="code_div">
+        <p class="code_text">
+            //Defining the http requests<br>
+            <b>const</b> domain = "<span class="url"></span>/";<br>
+            <b>const</b> parish_search_url = "place/parish/search?name="<br><br>
+
+            //Fetching the parishes whose name contain "Onze-Lieve-Vrouw".<br>
+            fetch(domain+parish_search_url+"Onze-Lieve-Vrouw").<b>then</b>(data=>{<b>return</b> data.json()}).<b>then</b>(res => {<br><br>
+
+            //Printing the places matching the search<br>
+            console.log(res);<br><br>
+
+            //We can loop through the list and only print those entries who match a condition,<br>
+            //in this case that it's located in Brussels.<br>
+            i = 0;<br>
+            <b>while</b> (i < res.length){<br>
+            <b>if</b> (res[i].city="Brussels"){console.log(res[i]);}<br>
+            i+=1;<br>
+            }<br>
+            <br>
+
+            })
+        </p>
+    </div>
+    <p class="text">
+        The output of one request can also be used as the input of the next request. This is demonstrated in the code below.
+        It attempts to answer the following question: given the actor with id 490, find the place where their daughter Catharina was married.
+    </p>
+    <div class="code_div">
+        <p class="code_text">
+            //Defining the http requests<br>
+            <b>const</b> domain = "<span class="url"></span>/";<br>
+            <b>const</b> offspring_url = "relationship/personal/offspring?id="<br>
+            <b>const</b> life_personal_events_url = "actor/life_events/personal?id="<br><br>
+
+            //Fetching all the offspring of the actor with id 490<br>
+            fetch(domain+offspring_url+490).<b>then</b>(data=>{<b>return</b> data.json()}).<b>then</b>(res => {<br><br>
+
+            //Searching for the child with the name Catharina<br>
+            entry = {};<br>
+            i = 0;<br>
+            <b>while</b> (i < res.length){<br>
+            <b>if</b> (res[i].first_name="Catharina"){entry = res[i];}<br>
+            i+=1;<br>
+            }<br>
+            <br>
+
+            //Fetching the life events of Catharina<br>
+            fetch(domain+life_personal_events_url+entry.id).<b>then</b>(data=>{<b>return</b> data.json()}).<b>then</b>(res => {<br><br>
+
+            //Searching for Catharina's marriage<br>
+            entry = {};<br>
+            i = 0;<br>
+            <b>while</b> (i < res.length){<br>
+            <b>if</b> (res[i].role="married"){entry = res[i];}<br>
+            i+=1;<br>
+            }<br>
+            <br>
+            //Logging the place of Catharina's wedding.<br>
+            console.log(entry.place);<br><br>
+            })})
+        </p>
+    </div>
+
+    <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+</div>
+<div class="structure_section">
+    <a name="archive"></a>
+    <h2>Archive</h2>
+    <p class="statement">General information on the archives stored in the database</p>
+
+    <div class="entry">
+        <a name="archive_year_limits"></a>
+        <h4>/archives/year_limits</h4>
+        <p class="statement">Returns the first and the last year for which there are entries present in the database.</p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">first_year: </a><a class="explanation">The first year for which there is an entry</a></p>
+        <p class="tab"><a class="keywords">last_year: </a><a class="explanation">The last year for which there is an entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="archive_count"></a>
+        <h4>/archives/count</h4>
+        <p class="statement">Returns the amount of entries present in the database..</p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">count: </a><a class="explanation">The count of entries</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+</div>
+<div class="structure_section">
+    <a name="actor"></a>
+    <h2>Actor</h2>
+    <p class="statement">Information pertaining to the actors in the database.</p>
+
+    <div class="entry">
+        <a name="actor_id"></a>
+        <h4>/actor/id?first_name&surname</h4>
+        <p class="statement">Returns the ids of the people matching the first and surname provided exactly.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the actor</a></p>
+        <p class="tab"><a class="keywords">surname: </a><a class="explanation">The surname of the actor</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation"></a><a class="explanation">The id matching the given name</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_search"></a>
+        <h4>/actor/search?name&variants</h4>
+        <p class="statement">Returns a list of actors matching the description given in name. This does not have to be the complete name and variants of this name that were recorded can be searched as well.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation"></a><a class="explanation">The name of the person that is being searched for.</a></p>
+        <p class="tab"><a class="keywords">variants (default=0): </a><a class="explanation"></a><a class="explanation">Whether or not to search the variants of names.</a></p>
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the actor matching the description</a></p>
+        <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the actor</a></p>
+        <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the actor</a></p>
+        <p class="extra_tab"><a class="keywords">variant: </a><a class="explanation">The variant of the actor's name (if variants is 1)</a></p>
+        <p class="extra_tab"><a class="keywords">variant_source_entry_id: </a><a class="explanation">The id of the entry containing the reference to the variant (if variants is 1)</a></p>
+        <p class="section_statement">error</p>
+        <p class="tab"><a class="keywords">400: </a><a class="explanation">if variants is not in (0,1)</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+
+    <div class="entry">
+        <a name="actor_first_name"></a>
+        <h4>/actor/first_name?id</h4>
+        <p class="statement">Returns the first name of the actor identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the actor</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_surname"></a>
+        <h4>/actor/surname?id</h4>
+        <p class="statement">Returns the surname of the actor identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">surname: </a><a class="explanation">The surname of the actor</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_gender"></a>
+        <h4>/actor/gender?id</h4>
+        <p class="statement">Returns the gender of the actor identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">gender: </a><a class="explanation">The gender of the actor (male or female)</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_incomplete"></a>
+        <h4>/actor/incomplete?id</h4>
+        <p class="statement">Returns whether the record of the actor identified by the id is incomplete or not.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">incomplete: </a><a class="explanation">Indicates whether the record of the actor is incomplete (1=incomplete, 0=complete)</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_lifespan"></a>
+        <h4>/actor/lifespan?id</h4>
+        <p class="statement">Returns the lifespan of the person identified by the id, based on their baptism and their burial date.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">year_of_birth: </a><a class="explanation">The year in which the person was born, can be null</a></p>
+        <p class="tab"><a class="keywords">month_of_birth: </a><a class="explanation">The month in which the person was born, can be null</a></p>
+        <p class="tab"><a class="keywords">day_of_birth: </a><a class="explanation">The day in which the person was born, can be null</a></p>
+        <p class="tab"><a class="keywords">source_entry_birth_id: </a><a class="explanation">The id of the source entry which recorded this birth</a></p>
+        <p class="tab"><a class="keywords">year_of_death: </a><a class="explanation">The year in which the person died, can be null</a></p>
+        <p class="tab"><a class="keywords">month_of_death: </a><a class="explanation">The month in which the person died, can be null</a></p>
+        <p class="tab"><a class="keywords">day_of_death: </a><a class="explanation">The day in which the person died, can be null</a></p>
+        <p class="tab"><a class="keywords">source_entry_death_id: </a><a class="explanation">The id of the source entry which recorded this death</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_life_events_personal"></a>
+        <h4>/actor/life_events/personal?id</h4>
+        <p class="statement">Returns the events throughout a persons life pertaining to their personal life.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+        <p class="tab"><a class="keywords">source (optional): </a><a class="explanation">Specifies the reference of the  source in which to search for the life events</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List of:</a></p>
+        <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry which record this life event</a></p>
+        <p class="extra_tab"><a class="keywords">role: </a><a class="explanation">The role of the person in this entry</a></p>
+        <p class="extra_tab"><a class="keywords">place_id: </a><a class="explanation">The id of the place where this event happened</a></p>
+        <p class="extra_tab"><a class="keywords">place: </a><a class="explanation">The name of the place where this event happened</a></p>
+        <p class="extra_tab"><a class="keywords">number of mentions: </a><a class="explanation">The number of times someone was mentioned</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="actor_life_events_professional"></a>
+        <h4>/actor/life_events/professional?id</h4>
+        <p class="statement">Returns the events throughout a persons life pertaining to their professional life.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+        <p class="tab"><a class="keywords">source (optional): </a><a class="explanation">Specifies the reference of the source in which to search for the life events</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List of:</a></p>
+        <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the entry in the source</a></p>
+        <p class="extra_tab"><a class="keywords">phase: </a><a class="explanation">The phase in which this entry is</a></p>
+        <p class="extra_tab"><a class="keywords">remarks: </a><a class="explanation">Any additional remarks</a></p>
+        <p class="extra_tab"><a class="keywords">role_organization: </a><a class="explanation">The role of the organization</a></p>
+        <p class="extra_tab"><a class="keywords">organization_id: </a><a class="explanation">The id of the organization</a></p>
+        <p class="extra_tab"><a class="keywords">organization_name: </a><a class="explanation">The name of the organization</a></p>
+        <p class="extra_tab"><a class="keywords">status: </a><a class="explanation">The status of the actor with the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+</div>
+<div class="structure_section">
+    <a name="organization"></a>
+    <h2>Organization</h2>
+    <p class="statement">Information on organizations</p>
+
+    <div class="entry">
+        <a name="organization_id"></a>
+        <h4>/organization/id?name</h4>
+        <p class="statement">Returns the ids of organizations matching the name exactly.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List Of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the organization matching the name exactly</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="organization_search"></a>
+        <h4>/organization/search?name</h4>
+        <p class="statement">Returns the ids of organizations matching the name at least partially.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation">The name partially matching the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List Of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the organization partially matching the name</a></p>
+        <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The name of the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="organization_name"></a>
+        <h4>/organization/name?id</h4>
+        <p class="statement">Returns the name of the organization identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation">name of the organization
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="organization_organization_type_name"></a>
+        <h4>/organization/organization_type_name?id</h4>
+        <p class="statement">Returns the type of organization identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">organization_type_name: </a><a class="explanation">The type of the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="organization_place_id"></a>
+        <h4>/organization/place_id?id</h4>
+        <p class="statement">Returns the place id where the organization identified by the given id is located.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">place_id: </a><a class="explanation">The id of the place of the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="organization_place_name"></a>
+        <h4>/organization/place_name?id</h4>
+        <p class="statement">Returns the place name where the organization identified by the given id is located.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">place_name: </a><a class="explanation">The name of the place of the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="organization_actor_id"></a>
+        <h4>/organization/actor_id?id</h4>
+        <p class="statement">Returns the id of the actor associated with the organization identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">actor_id: </a><a class="explanation">The id of the actor associated with the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="organization_first_name"></a>
+        <h4>/organization/first_name?id</h4>
+        <p class="statement">Returns the first_name of the actor associated with the organization identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the actor associated with the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="organization_surname"></a>
+        <h4>/organization/surname?id</h4>
+        <p class="statement">Returns the surname of the actor associated with the organization identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the organization</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">surname: </a><a class="explanation">The surname of the actor associated with the organization</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+</div>
+<div class="structure_section">
+    <a name="place"></a>
+    <h2>Place</h2>
+    <p class="statement">Information on places</p>
+
+    <div class="entry">
+        <a name="place_id"></a>
+        <h4>/place/id?name</h4>
+        <p class="statement">Returns the id of a place that matches the place name exactly..</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the given place name</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="place_search"></a>
+        <h4>/place/search?name</h4>
+        <p class="statement">Returns a list of possible places that match the searched name.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation">The name to search for</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the possible place</a></p>
+        <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The full name of the the possible place</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="place_name"></a>
+        <h4>/place/name?id</h4>
+        <p class="statement">Returns the name of the place identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the place</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="place_country"></a>
+        <h4>/place/country?id</h4>
+        <p class="statement">Returns the country of the place identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">country: </a><a class="explanation">The name of the country, possibly null</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="place_city"></a>
+        <h4>/place/city?id</h4>
+        <p class="statement">Returns the city of the place identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">city: </a><a class="explanation">The name of the city, possibly null</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="place_parish"></a>
+        <h4>/place/parish?id</h4>
+        <p class="statement">Returns the parish of the place identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">parish: </a><a class="explanation">The name of the parish, possibly null</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="place_street"></a>
+        <h4>/place/street?id</h4>
+        <p class="statement">Returns the street of the place identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">street: </a><a class="explanation">The name of the street, possibly null</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="place_house"></a>
+        <h4>/place/house?id</h4>
+        <p class="statement">Returns the house of the place identified by the id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the place</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">house: </a><a class="explanation">The name of the house, possibly null</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="structure_subsection">
+        <a name="place_country"></a>
+        <h3>County</h3>
+        <p class="statement">Information on countries</p>
+
+        <div class="entry">
+            <a name="place_country_id"></a>
+            <h4>/place/country/id?name</h4>
+            <p class="statement">Returns the id of the country which matches the name exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the country</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The country id of the given country name</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_country_search"></a>
+            <h4>/place/country/search?name</h4>
+            <p class="statement">Return the ids of the country which matches the name partially or exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The (partial) name of the country</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the countries where the country name matches</a></p>
+            <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The full name of the the possible country</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_country_name"></a>
+            <h4>/place/country/name?id</h4>
+            <p class="statement">Returns the name of the country identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the country</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the country</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_country_matching"></a>
+            <h4>/place/country/matching?id</h4>
+            <p class="statement">Returns the place which matches the country id provided.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the country</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the place</a></p>
+            <p class="extra_tab"><a class="keywords">place: </a><a class="explanation">The name of the place</a></p>
+            <p class="extra_tab"><a class="keywords">country: </a><a class="explanation">The name of the country</a></p>
+            <p class="extra_tab"><a class="keywords">city: </a><a class="explanation">The name of the city</a></p>
+            <p class="extra_tab"><a class="keywords">parish: </a><a class="explanation">The name of the parish</a></p>
+            <p class="extra_tab"><a class="keywords">street: </a><a class="explanation">The name of the street</a></p>
+            <p class="extra_tab"><a class="keywords">house: </a><a class="explanation">The name of the house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+    <div class="structure_subsection">
+        <a name="place_city"></a>
+        <h3>City</h3>
+        <p class="statement">Information on cities</p>
+
+        <div class="entry">
+            <a name="place_city_id"></a>
+            <h4>/place/city/id?name</h4>
+            <p class="statement">Returns the id of the city which matches the name exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the city</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The city id of the given city name</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_city_search"></a>
+            <h4>/place/city/search?name</h4>
+            <p class="statement">Return the ids of the city which matches the name partially or exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The (partial) name of the city</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the cities where the city name matches</a></p>
+            <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The full name of the the possible city</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_city_name"></a>
+            <h4>/place/city/name?id</h4>
+            <p class="statement">Returns the name of the city identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the city</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the city</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_city_matching"></a>
+            <h4>/place/city/matching?id</h4>
+            <p class="statement">Returns the place which matches the city id provided.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the city</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the place</a></p>
+            <p class="extra_tab"><a class="keywords">place: </a><a class="explanation">The name of the place</a></p>
+            <p class="extra_tab"><a class="keywords">country: </a><a class="explanation">The name of the country</a></p>
+            <p class="extra_tab"><a class="keywords">city: </a><a class="explanation">The name of the city</a></p>
+            <p class="extra_tab"><a class="keywords">parish: </a><a class="explanation">The name of the parish</a></p>
+            <p class="extra_tab"><a class="keywords">street: </a><a class="explanation">The name of the street</a></p>
+            <p class="extra_tab"><a class="keywords">house: </a><a class="explanation">The name of the house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+    <div class="structure_subsection">
+        <a name="place_parish"></a>
+        <h3>Parish</h3>
+        <p class="statement">Information on parishes</p>
+
+        <div class="entry">
+            <a name="place_parish_id"></a>
+            <h4>/place/parish/id?name</h4>
+            <p class="statement">Returns the id of the parish which matches the name exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the parish</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The parish id of the given parish name</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_parish_search"></a>
+            <h4>/place/parish/search?name</h4>
+            <p class="statement">Return the ids of the parish which matches the name partially or exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The (partial) name of the parish</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the parishes where the parish name matches</a></p>
+            <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The full name of the the possible parish</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_parish_name"></a>
+            <h4>/place/parish/name?id</h4>
+            <p class="statement">Returns the name of the parish identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the parish</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the parish</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_parish_matching"></a>
+            <h4>/place/parish/matching?id</h4>
+            <p class="statement">Returns the place which matches the parish id provided.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the parish</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the place</a></p>
+            <p class="extra_tab"><a class="keywords">place: </a><a class="explanation">The name of the place</a></p>
+            <p class="extra_tab"><a class="keywords">country: </a><a class="explanation">The name of the country</a></p>
+            <p class="extra_tab"><a class="keywords">city: </a><a class="explanation">The name of the city</a></p>
+            <p class="extra_tab"><a class="keywords">parish: </a><a class="explanation">The name of the parish</a></p>
+            <p class="extra_tab"><a class="keywords">street: </a><a class="explanation">The name of the street</a></p>
+            <p class="extra_tab"><a class="keywords">house: </a><a class="explanation">The name of the house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+    <div class="structure_subsection">
+        <a name="place_street"></a>
+        <h3>Street</h3>
+        <p class="statement">Information on streets</p>
+
+        <div class="entry">
+            <a name="place_street_id"></a>
+            <h4>/place/street/id?name</h4>
+            <p class="statement">Returns the id of the street which matches the name exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the street</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The street id of the given street name</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_street_search"></a>
+            <h4>/place/street/search?name</h4>
+            <p class="statement">Return the ids of the street which matches the name partially or exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The (partial) name of the street</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the streets where the street name matches</a></p>
+            <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The full name of the the possible street</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_street_name"></a>
+            <h4>/place/street/name?id</h4>
+            <p class="statement">Returns the name of the street identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the street</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the street</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_street_matching"></a>
+            <h4>/place/street/matching?id</h4>
+            <p class="statement">Returns the place which matches the street id provided.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the street</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the place</a></p>
+            <p class="extra_tab"><a class="keywords">place: </a><a class="explanation">The name of the place</a></p>
+            <p class="extra_tab"><a class="keywords">country: </a><a class="explanation">The name of the country</a></p>
+            <p class="extra_tab"><a class="keywords">city: </a><a class="explanation">The name of the city</a></p>
+            <p class="extra_tab"><a class="keywords">parish: </a><a class="explanation">The name of the parish</a></p>
+            <p class="extra_tab"><a class="keywords">street: </a><a class="explanation">The name of the street</a></p>
+            <p class="extra_tab"><a class="keywords">house: </a><a class="explanation">The name of the house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+    <div class="structure_subsection">
+        <a name="place_house"></a>
+        <h3>House</h3>
+        <p class="statement">Information on houses</p>
+
+        <div class="entry">
+            <a name="place_house_id"></a>
+            <h4>/place/house/id?name</h4>
+            <p class="statement">Returns the id of the house which matches the name exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the house</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The house id of the given house name</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_house_search"></a>
+            <h4>/place/house/search?name</h4>
+            <p class="statement">Return the ids of the house which matches the name partially or exactly.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The (partial) name of the house</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the houses where the house name matches</a></p>
+            <p class="extra_tab"><a class="keywords">name: </a><a class="explanation">The full name of the the possible house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_house_name"></a>
+            <h4>/place/house/name?id</h4>
+            <p class="statement">Returns the name of the house identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the house</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">name: </a><a class="explanation">The name of the house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="place_house_matching"></a>
+            <h4>/place/house/matching?id</h4>
+            <p class="statement">Returns the place which matches the house id provided.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id indicating the house</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the place</a></p>
+            <p class="extra_tab"><a class="keywords">place: </a><a class="explanation">The name of the place</a></p>
+            <p class="extra_tab"><a class="keywords">country: </a><a class="explanation">The name of the country</a></p>
+            <p class="extra_tab"><a class="keywords">city: </a><a class="explanation">The name of the city</a></p>
+            <p class="extra_tab"><a class="keywords">parish: </a><a class="explanation">The name of the parish</a></p>
+            <p class="extra_tab"><a class="keywords">street: </a><a class="explanation">The name of the street</a></p>
+            <p class="extra_tab"><a class="keywords">house: </a><a class="explanation">The name of the house</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+</div>
+<div class="structure_section">
+    <a name="relationship"></a>
+    <h2>Relationship</h2>
+    <p class="statement">Information pertaining to the relationships recorded in the sources.</p>
+
+    <div class="structure_subsection">
+        <a name="relationship_personal"></a>
+        <h3>Personal</h3>
+        <p class="statement">Information on personal relationships</p>
+
+        <div class="entry">
+            <a name="relationship_personal_spouse"></a>
+            <h4>/relationship/personal/spouses?id</h4>
+            <p class="statement">Returns the spouses of the person identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose spouse we are searching for</a></p>
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">ListOf:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the spouse</a></p>
+            <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the spouse</a></p>
+            <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the spouse</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded the spouse</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="relationship_personal_parents"></a>
+            <h4>/relationship/personal/parents?id</h4>
+            <p class="statement">Return the parents of the person identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose parents we are searching for</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">father_id: </a><a class="explanation">The id of the father</a></p>
+            <p class="tab"><a class="keywords">father_first_name: </a><a class="explanation">The first name of the father</a></p>
+            <p class="tab"><a class="keywords">father_surname: </a><a class="explanation">The surname of the father</a></p>
+            <p class="tab"><a class="keywords">mother_id: </a><a class="explanation">The id of the mother</a></p>
+            <p class="tab"><a class="keywords">mother_first_name: </a><a class="explanation">The first name of the mother</a></p>
+            <p class="tab"><a class="keywords">mother_surname: </a><a class="explanation">The surname of the mother</a></p>
+            <p class="tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded these parents</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="relationship_personal_offspring"></a>
+            <h4>/relationship/personal/offspring?id</h4>
+            <p class="statement">Returns the offspring of the person identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose offspring we are searching for</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the child</a></p>
+            <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the child</a></p>
+            <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the child</a></p>
+            <p class="extra_tab"><a class="keywords">year_of_birth: </a><a class="explanation">The year in which the child was born, according to baptism records</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded this child</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="relationship_personal_godparents"></a>
+            <h4>/relationship/personal/godparents?id</h4>
+            <p class="statement">Return the godparents of the person identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose godparents we are searching for</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">godfather_id: </a><a class="explanation">The id of the godfather</a></p>
+            <p class="tab"><a class="keywords">godfather_first_name: </a><a class="explanation">The first name of the godfather</a></p>
+            <p class="tab"><a class="keywords">godfather_surname: </a><a class="explanation">The surname of the godfather</a></p>
+            <p class="tab"><a class="keywords">godmother_id: </a><a class="explanation">The id of the godmother</a></p>
+            <p class="tab"><a class="keywords">godmother_first_name: </a><a class="explanation">The first name of the godmother</a></p>
+            <p class="tab"><a class="keywords">godmother_surname: </a><a class="explanation">The surname of the godmother</a></p>
+            <p class="tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded these godparents</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="relationship_personal_godchildren"></a>
+            <h4>/relationship/personal/godchildren?id</h4>
+            <p class="statement">Returns the godchildren of the person identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose godchildren we are searching for</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the godchild</a></p>
+            <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the godchild</a></p>
+            <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the godchild</a></p>
+            <p class="extra_tab"><a class="keywords">year_of_birth: </a><a class="explanation">The year in which the godchild was born, according to baptism records</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded this godchild</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+    <div class="structure_subsection">
+        <a name="relationship_professional"></a>
+        <h3>Professional</h3>
+        <p class="statement">Information on professional relationships</p>
+
+        <div class="entry">
+            <a name="relationship_professional_teachers"></a>
+            <h4>/relationship/professional/teachers?id</h4>
+            <p class="statement">Returns the teachers of the actor identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose teachers we are searching for</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the teacher</a></p>
+            <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the teacher</a></p>
+            <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the teacher</a></p>
+            <p class="extra_tab"><a class="keywords">year: </a><a class="explanation">The year in which the actor became an apprentice of this teacher</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded this teacher</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="relationship_professional_students"></a>
+            <h4>/relationship/professional/students?id</h4>
+            <p class="statement">Returns the students of the actor identified by the id.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor whose students we are searching for</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List of:</a></p>
+            <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the student</a></p>
+            <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The first name of the student</a></p>
+            <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the student</a></p>
+            <p class="extra_tab"><a class="keywords">year: </a><a class="explanation">The year in which the actor became an teacher of this student</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which recorded this student</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+    <div class="structure_subsection">
+        <a name="relationship_location"></a>
+        <h3>Location</h3>
+        <p class="statement">Information on relationships to locations</p>
+
+        <div class="entry">
+            <a name="relationship_location_residents"></a>
+            <h4>/relationship/location/residents?id</h4>
+            <p class="statement">Returns the residents of a location.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the place</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List Of:</a></p>
+            <p class="extra_tab"><a class="keywords">actor_id: </a><a class="explanation">The id of the actor that resided at the place</a></p>
+            <p class="extra_tab"><a class="keywords">first_name: </a><a class="explanation">The name of the actor</a></p>
+            <p class="extra_tab"><a class="keywords">surname: </a><a class="explanation">The surname of the actor</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which records this resident</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+
+        <div class="entry">
+            <a name="relationship_location_living_places"></a>
+            <h4>/relationship/location/living_places?id</h4>
+            <p class="statement">Returns the locations where the given actor lived.</p>
+
+            <p class="section_statement">params</p>
+            <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the actor</a></p>
+
+            <p class="section_statement">return</p>
+            <p class="tab"><a class="keywords">List Of:</a></p>
+            <p class="extra_tab"><a class="keywords">place_id: </a><a class="explanation">The id of the place</a></p>
+            <p class="extra_tab"><a class="keywords">place_name = The name of the place</a></p>
+            <p class="extra_tab"><a class="keywords">source_entry_id: </a><a class="explanation">The id of the source entry, which records this living place</a></p>
+            <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+        </div>
+    </div>
+</div>
+<div class="structure_section">
+    <a name="source"></a>
+    <h2>Source</h2>
+    <p class="statement">Information on the source</p>
+
+    <div class="entry">
+        <a name="source_id"></a>
+        <h4>/source/id?reference</h4>
+        <p class="statement">Returns the id of the source matching the reference exactly.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">reference: </a><a class="explanation">The reference of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source that matches the reference</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_search"></a>
+        <h4>/source/search?reference</h4>
+        <p class="statement">Returns a list of sources matching the provided reference at least partially.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">reference: </a><a class="explanation">The reference of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List Of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of the source that matches the reference at least partially</a></p>
+        <p class="extra_tab"><a class="keywords">reference: </a><a class="explanation">The full reference of the source</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="source_reference"></a>
+        <h4>/source/reference?id</h4>
+        <p class="statement">Returns the reference of the source identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">reference: </a><a class="explanation">The reference used for the source, constructed from an abbreviation of the archive name, the archival_set_abbreviation and the call number</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+    <div class="entry">
+        <a name="source_call_number"></a>
+        <h4>/source/call_number?id</h4>
+        <p class="statement">Returns call_number of the source identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">call_number: </a><a class="explanation">the call number of the source</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_archive"></a>
+        <h4>/source/archive?id</h4>
+        <p class="statement">Returns archive of the source identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">archive: </a><a class="explanation">The abbreviation and the name of the archive containing this source, separated by "|"</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_archival_set_abbreviation"></a>
+        <h4>/source/archival_set_abbreviation?id</h4>
+        <p class="statement">Returns abbreviation of the archival set of the source identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">archival_set_abbreviation: </a><a class="explanation">The abbreviation of the archival set containing this source</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_archival_set_name"></a>
+        <h4>/source/archival_set_name?id</h4>
+        <p class="statement">Returns name of the archival set of the source identified by the given id.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">archival_set_name: </a><a class="explanation">The name of the archival set containing this source</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+</div>
+<div class="structure_section">
+    <a name="source_entry"></a>
+    <h2>Source entry</h2>
+    <p class="statement">Information related to the entries in sources</p>
+
+    <div class="entry">
+        <a name="source_entry_id"></a>
+        <h4>/source_entry/id?source_reference&entry_reference</h4>
+        <p class="statement">Returns the id of the source entry exactly matching the source and entry reference.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">source_reference: </a><a class="explanation">The reference of the source</a></p>
+        <p class="tab"><a class="keywords">entry_reference: </a><a class="explanation">The reference of the entry in the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id exactly matching these references</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_search"></a>
+        <h4>/source_entry/search?source_reference&entry_reference</h4>
+        <p class="statement">Returns a list of source entries matching the provided references.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">source_reference: </a><a class="explanation">A partial reference of the source</a></p>
+        <p class="tab"><a class="keywords">entry_reference: </a><a class="explanation">A partial reference of the entry in the source</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">List Of:</a></p>
+        <p class="extra_tab"><a class="keywords">id: </a><a class="explanation">The id of a matching source entry</a></p>
+        <p class="extra_tab"><a class="keywords">entry_reference: </a><a class="explanation">the reference of the matching entry</a></p>
+        <p class="extra_tab"><a class="keywords">source_reference: </a><a class="explanation">the reference of the source in which the entry is recorded</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_source_id"></a>
+        <h4>/source_entry/source_id?id</h4>
+        <p class="statement">Returns the source id of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">source_id: </a><a class="explanation">The id of the source where</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_source_reference"></a>
+        <h4>/source_entry/source_reference?id</h4>
+        <p class="statement">Returns the source reference of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">source_reference: </a><a class="explanation">The reference of the source</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_source_entry_reference"></a>
+        <h4>/source_entry/source_entry_reference?id</h4>
+        <p class="statement">Returns the source entry reference of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">source_entry_reference: </a><a class="explanation">The reference of the entry in the source</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_source_entry_type_name"></a>
+        <h4>/source_entry/source_entry_type_name?id</h4>
+        <p class="statement">Returns the source entry type's name of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">source_entry_type_name: </a><a class="explanation">The name of the type of entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_source_entry_type_category"></a>
+        <h4>/source_entry/source_entry_type_category?id</h4>
+        <p class="statement">Returns the source entry type's category of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">source_entry_type_category: </a><a class="explanation">The category of the type of entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_date"></a>
+        <h4>/source_entry/date?id</h4>
+        <p class="statement">Returns the date of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">date_day: </a><a class="explanation">The day of the entry</a></p>
+        <p class="tab"><a class="keywords">date_month: </a><a class="explanation">The month of the entry</a></p>
+        <p class="tab"><a class="keywords">date_year: </a><a class="explanation">the year of the entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+
+
+    <div class="entry">
+        <a name="source_entry_remarks"></a>
+        <h4>/source_entry/remarks?id</h4>
+        <p class="statement">Returns the remarks of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">remarks: </a><a class="explanation">Any remarks for the entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_picture_file"></a>
+        <h4>/source_entry/picture_file?id</h4>
+        <p class="statement">Returns the picture file of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">picture_file: </a><a class="explanation">The file containing the picture of the entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+
+    <div class="entry">
+        <a name="source_entry_publication"></a>
+        <h4>/source_entry/publication?id</h4>
+        <p class="statement">Returns the publication of the source entry.</p>
+
+        <p class="section_statement">params</p>
+        <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
+
+        <p class="section_statement">return</p>
+        <p class="tab"><a class="keywords">publication: </a><a class="explanation">The publication linked to this entry</a></p>
+        <p class="return_home"><a href="#table_of_contents">Table of contents</a></p>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function setUrl() {
+        let urls = document.getElementsByClassName("url");
+        for (let i =0; i<urls.length; i++) {
+            urls[i].innerHTML= window.location.origin;
+        }
+    }
+    setUrl()
+</script>
+
+</html>
