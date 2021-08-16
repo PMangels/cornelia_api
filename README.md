@@ -38,11 +38,12 @@ The user that is currently being used by the api (see the top of the `api/server
 Now we need to import the data from the sql file and add the view `view_place`.  
 `SOURCE /mysql/www_cornelia2.sql;`  
 `CREATE VIEW view_place AS select www_cornelia2.place.id AS id,www_cornelia2.country.name AS country,www_cornelia2.city.name AS city,www_cornelia2.parish.name AS parish,www_cornelia2.street.name AS street,www_cornelia2.house.name AS house,concat_ws(', ',www_cornelia2.country.name,www_cornelia2.city.name,www_cornelia2.parish.name,www_cornelia2.street.name,www_cornelia2.house.name) AS place from (((((www_cornelia2.place left join www_cornelia2.country on((www_cornelia2.place.country_id = www_cornelia2.country.id))) left join www_cornelia2.city on((www_cornelia2.place.city_id = www_cornelia2.city.id))) left join www_cornelia2.parish on((www_cornelia2.place.parish_id = www_cornelia2.parish.id))) left join www_cornelia2.street on((www_cornelia2.place.street_id = www_cornelia2.street.id))) left join www_cornelia2.house on((www_cornelia2.place.house_id = www_cornelia2.house.id)));`  
-
+Now we have imported all the data, we can quit the MySQL terminal:  
+`QUIT;`
 ### Natively
 If you want to run the code on your own machine, especially useful for fast testing during development, you can follow the following subsection for instructions.  
 #### Run the MySQL database
-For this guide a running MySQL database is assumed. We start by creating the database
+For this guide a running MySQL database is assumed. We start by creating the database  
 `CREATE DATABASE www_cornelia2;`  
 `USE www_cornelia2;`  
 The user that is currently being used by the api (see the top of the `api/server.rb` file for these details) should be added to the database.  
@@ -50,7 +51,8 @@ The user that is currently being used by the api (see the top of the `api/server
 Now we need to import the data from the sql file and add the view `view_place`.  
 `SOURCE ./mysql/www_cornelia2.sql;`  
 `CREATE VIEW view_place AS select www_cornelia2.place.id AS id,www_cornelia2.country.name AS country,www_cornelia2.city.name AS city,www_cornelia2.parish.name AS parish,www_cornelia2.street.name AS street,www_cornelia2.house.name AS house,concat_ws(', ',www_cornelia2.country.name,www_cornelia2.city.name,www_cornelia2.parish.name,www_cornelia2.street.name,www_cornelia2.house.name) AS place from (((((www_cornelia2.place left join www_cornelia2.country on((www_cornelia2.place.country_id = www_cornelia2.country.id))) left join www_cornelia2.city on((www_cornelia2.place.city_id = www_cornelia2.city.id))) left join www_cornelia2.parish on((www_cornelia2.place.parish_id = www_cornelia2.parish.id))) left join www_cornelia2.street on((www_cornelia2.place.street_id = www_cornelia2.street.id))) left join www_cornelia2.house on((www_cornelia2.place.house_id = www_cornelia2.house.id)));`  
-
+Now we have imported all the data, we can quit the MySQL terminal:  
+`QUIT;`
 #### Run the API
 For this guide a working [Ruby](https://www.ruby-lang.org/en/) is assumed. To find information on installing Ruby, click [here](https://www.ruby-lang.org/en/downloads/).  
 Some gems should also be installed (sinatra, mysql2 etc.). See `api/Gemfile` for more information on this. Mysql2 might require a MySQL or MariaDB client. These dependencies are the main advantage of the Podman method. Running `bundle install` inside the `api` folder might install the needed gems.  

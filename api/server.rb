@@ -47,7 +47,6 @@ class App < Sinatra::Base
 
 
 
-    # TODO: datatypes?
     # -------------------------------------------------- ARCHIVES --------------------------------------------------
     #       General information on the archives stored in the database
 
@@ -728,7 +727,6 @@ class App < Sinatra::Base
     #           id: The id indicating the place
     #
     #       return
-    # TODO: Specify in docs
     #
     #           name: The name of the place
     #           country: The name of the country, possibly null
@@ -908,9 +906,6 @@ class App < Sinatra::Base
     #           remarks: Any remarks for the entry
     #           picture_file: The file containing the picture of the entry
     #           publication: The publication linked to this entry
-    #
-    #           TODO: crud user not included for privacy reasons?
-    #           TODO: ghost?
     param :id, :Integer, required: true
     get '/source_entry/info' do
         client = Mysql2::Client.new(:host => $db_host, :port => $db_port, :username => $db_user, :password => $db_pass, :database => $db_name)
@@ -943,7 +938,6 @@ class App < Sinatra::Base
     #           id: The id of the source entry
     #
     #       return
-    # TODO: fix in docs
     #
     #           source_id: The id of the source where
     #           source_reference: The reference of the source
@@ -956,9 +950,6 @@ class App < Sinatra::Base
     #           remarks: Any remarks for the entry
     #           picture_file: The file containing the picture of the entry
     #           publication: The publication linked to this entry
-    #
-    #           TODO: crud user not included for privacy reasons?
-    #           TODO: ghost?
     param :id, :Integer, required: true
     get '/source_entry/:se_info' do
         pass unless $source_entry_info_dict.keys.include? params[:se_info]
@@ -1051,7 +1042,6 @@ class App < Sinatra::Base
     #           id: The id of the source
     #
     #       return
-    # TODO: Fix in docs
     #
     #           reference: The reference used for the source, constructed from an abbreviation of the archive name, the archival_set_abbreviation and the call number
     #           call_number: the call number of the source
@@ -1146,7 +1136,6 @@ class App < Sinatra::Base
     #           id: The id of the organization
     #
     #       return
-    # TODO: Fix in docs
     #
     #           name: name of the organization
     #           organization_type_name: The type of the organization

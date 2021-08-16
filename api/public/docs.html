@@ -321,10 +321,10 @@
             console.log(res);<br><br>
 
             //We can loop through the list and only print those entries who match a condition,<br>
-            //in this case that it's located in Brussels.<br>
+            //in this case that its full name is "Onze-Lieve-Vrouw Noord".<br>
             i = 0;<br>
             <b>while</b> (i < res.length){<br>
-            <b>if</b> (res[i].city="Brussels"){console.log(res[i]);}<br>
+            <b>if</b> (res[i].name=="Onze-Lieve-Vrouw Noord"){console.log(res[i].id);}<br>
             i+=1;<br>
             }<br>
             <br>
@@ -350,7 +350,7 @@
                 entry = {};<br>
                 i = 0;<br>
                 <b>while</b> (i < res.length){<br>
-                    <b>if</b> (res[i].first_name="Catharina"){entry = res[i];}<br>
+                    <b>if</b> (res[i].first_name=="Catharina"){entry = res[i];}<br>
                     i+=1;<br>
                 }<br>
                 <br>
@@ -362,7 +362,7 @@
                     entry = {};<br>
                     i = 0;<br>
                     <b>while</b> (i < res.length){<br>
-                        <b>if</b> (res[i].role="married"){entry = res[i];}<br>
+                        <b>if</b> (res[i].role=="married"){entry = res[i];}<br>
                         i+=1;<br>
                     }<br>
                     <br>
@@ -1227,7 +1227,7 @@
         <p class="tab"><a class="keywords">id: </a><a class="explanation">The id of the source entry</a></p>
 
         <p class="section_statement">return</p>
-        <p class="tab"><a class="keywords">source_id: </a><a class="explanation">The id of the source where</a></p>
+        <p class="tab"><a class="keywords">source_id: </a><a class="explanation">The id of the source</a></p>
         <p class="tab"><a class="keywords">source_reference: </a><a class="explanation">The reference of the source</a></p>
         <p class="tab"><a class="keywords">source_entry_reference: </a><a class="explanation">The reference of the entry in the source</a></p>
         <p class="tab"><a class="keywords">source_entry_type_name: </a><a class="explanation">The name of the type of entry</a></p>
